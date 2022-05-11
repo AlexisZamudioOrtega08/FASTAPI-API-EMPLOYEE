@@ -2,7 +2,7 @@ from fastapi import FastAPI, Response, status, HTTPException
 
 app = FastAPI()
 
-employees = [{"id": 1, "name": "John"}, {"id": 2, "name": "Doe"}]
+employees = [{"id": 1, "name": "John"}, {"id": 2, "name": "Doe"}, {"id": 3, "name": "Smith"}]
 
 @app.get("/api/employees/", status_code=200)
 async def get_employees() -> Response:
