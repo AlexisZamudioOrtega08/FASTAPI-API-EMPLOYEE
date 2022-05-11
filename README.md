@@ -3,7 +3,7 @@
 ## This is a sample of API comsumption.
 
 ### The API (Employees) support the following operations:
-    READ: Return the list of employees.
+    READ: Return a json with employees details.
     CREATE: Create a new employee.
 
 #### GET a single employee:
@@ -37,7 +37,7 @@
 
 
 ### The API (Timesheet) support the following operations:
-    READ: Return the list of timesheet entries.
+    READ: Return a json with timesheet entries.
     CREATE: Create a new timesheet entry.
 #### GET all timesheet entries
 
