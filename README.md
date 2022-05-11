@@ -9,14 +9,14 @@
 
 ```http
   method: GET
-  localhost:8000/api/employees :: GET
+  localhost:8000/api/employees
 ```
 
 #### POST employee
 
 ```http
   method: POST
-  localhost:8000/api/employee :: POST
+  localhost:8000/api/employee
 ```
 
 | Parameter  | Type     | Description                 |
