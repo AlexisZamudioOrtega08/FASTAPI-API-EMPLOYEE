@@ -19,13 +19,16 @@ def get_db() -> Session:
     finally:
         db.close()
 
+
 @app.get("/api/employee/{employee_id}/", status_code=200)
 async def get_employee(employee_id: int, db: Session = Depends(get_db)):
-    employee = db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    employee = (
+        db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    )
     if employee is None:
         raise HTTPException(status_code=404, detail="Employee not found")
     return employee
-    
+
 
 @app.get("/api/employees/", status_code=200)
 async def get_employees(db: Session = Depends(get_db)):

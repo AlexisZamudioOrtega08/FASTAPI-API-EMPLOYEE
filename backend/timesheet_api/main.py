@@ -9,7 +9,7 @@ from datetime import datetime
 
 app = FastAPI()
 
-models.Base.metadata.create_all(bind=engine) 
+models.Base.metadata.create_all(bind=engine)
 
 
 def get_db() -> Session:
@@ -30,13 +30,18 @@ async def get_timesheets(db: Session = Depends(get_db)):
     """
     return db.query(models.Timesheet).all()
 
+
 @app.post("/api/timesheet/{emp_id}", status_code=201)
-async def create_timesheet(emp_id, timesheet_entry: TimesheetEntry, db: Session = Depends(get_db)):
+async def create_timesheet(
+    emp_id, timesheet_entry: TimesheetEntry, db: Session = Depends(get_db)
+):
     """
     Create a new timesheet, it consumps the employees API to verify if the employee exists.
     """
     async with aiohttp.ClientSession() as session:
-        async with session.get("http://127.0.0.1:8001/api/employee/{}".format(emp_id)) as resp:
+        async with session.get(
+            "http://127.0.0.1:8001/api/employee/{}".format(emp_id)
+        ) as resp:
             data = await resp.json()
             try:
                 new_timesheet = models.Timesheet(
@@ -44,12 +49,11 @@ async def create_timesheet(emp_id, timesheet_entry: TimesheetEntry, db: Session 
                     name=data["name"],
                     hours=timesheet_entry.hours,
                     description=timesheet_entry.description,
-                    #add current time to the timesheet
-                    date=datetime.now()
+                    # add current time to the timesheet
+                    date=datetime.now(),
                 )
                 db.add(new_timesheet)
                 db.commit()
                 return {"message": "Timesheet added"}
             except Exception as e:
                 raise HTTPException(status_code=404, detail="Employee not found")
-                
