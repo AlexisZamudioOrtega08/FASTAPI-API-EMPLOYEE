@@ -3,3 +3,4 @@ venv
 .env
 /src/__pycache__
 /src/db.sqlite
+frontend
