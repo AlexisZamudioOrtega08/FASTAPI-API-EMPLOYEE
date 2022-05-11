@@ -8,16 +8,29 @@
 #### GET all employees
 
 ```http
-  GET /api/employees
+  method: GET
+  localhost:8000/api/employees :: GET
 ```
 
 #### POST employee
 
 ```http
-  POST /api/employee
+  method: POST
+  localhost:8000/api/employee :: POST
 ```
 
 | Parameter  | Type     | Description                 |
 | :--------  | :------- | :-------------------------  |
-| `name`     | `string` | **Required**. Employee name |
-| `id`       | `int`    | **Required**. Employee id   |
+| `emp_name` | `string` | **Required**. Employee name |
+| `emp_id`   | `int`    | **Required**. Employee id   |
+
+
+### For installation, please create a python virtual environment and install requirements.txt.
+
+    pip install -r requirements.txt
+
+### Once installated and activated, go to src folder and run below command.
+
+    uvicorn main:app --reload
+
+#### If the step before was completed successfully, you must have running the server on your local host.
