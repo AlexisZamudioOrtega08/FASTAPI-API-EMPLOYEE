@@ -1,6 +1,8 @@
 venv
 .DS_Store
 .env
-/src/__pycache__
-/src/db.sqlite
+backend/employees_api/__pycache__
+backend/employees_api/db.sqlite
+backend/timesheet_api/__pycache__
+backend/timesheet_api/db.sqlite
 frontend
